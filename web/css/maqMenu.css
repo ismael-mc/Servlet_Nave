@@ -1,0 +1,98 @@
+body{
+    background-image: url("../lander/img/na.jpg");
+    text-align:center; 
+    vertical-align:middle;
+}
+section{
+    text-align: center;
+    color:#ffffff;
+}
+h1{
+    text-align: center;
+    color: #ffffff;
+}
+body:before {
+    display: inline-block;
+    vertical-align: middle; ;
+}
+.menu{
+    vertical-align:middle;
+    width:300px;
+    display:inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    transform:translate3d(0,0,0);
+}
+.menu input{
+    position:absolute;
+    left:-9999px;
+}
+.menu #togglemenu:checked ~ ul {
+    max-height:300px;
+    padding-bottom:1em;
+}
+.togglemenu {
+    background: #2B4357;
+    color: white;
+    display: block;
+    padding: 0.75em;
+    text-align: center;
+    cursor:pointer;
+    font-family: 'entypo', sans-serif;
+}
+.togglemenu:before{
+    content: "\2630";
+    font-size:1.5em;
+    vertical-align:middle;
+}
+
+.menu ul{
+    list-style:none;
+    margin-top:2px;
+    text-align:left;
+    max-height:0px;
+    overflow:hidden;
+    padding-bottom:0;
+    transition:300ms ease all;
+}
+.menu li{
+    margin-bottom:1px;
+    position:relative;
+    z-index:10;
+    transition:300ms ease all;
+}
+.menu li a {
+    display: block;
+    position:relative;
+    width:100%;
+    padding: 1em;
+    background:#465E71;
+    text-decoration:none;
+    color:white;
+    box-sizing:border-box;
+    transition:300ms ease all;
+}
+.menu li:hover a {
+    width:99%;
+    margin-left:1%;
+    box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.6);
+}
+.menu li:before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 30%;
+    left: 1%;
+    bottom: 16px;
+    box-shadow: 10px 0 0px black;
+    transition:300ms ease all;
+    transform: rotate(0deg);
+}
+
+.menu li:hover:before {
+    box-shadow: 10px 0 30px black;
+    transform: rotate(-4deg);
+    bottom: 6px;
+}
+.menu li:hover + li{
+    z-index:1;
+}
