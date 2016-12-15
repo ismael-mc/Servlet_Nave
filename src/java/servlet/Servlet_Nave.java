@@ -38,7 +38,7 @@ public class Servlet_Nave extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //SEGUN EL VALOR QUE RECOJO DEL HIDDEN REALIZO O EL REGISTRI DE USUARIO O LAS OPCIONES DEL MENU
         String action = request.getParameter("action");
 
         try {
@@ -46,15 +46,16 @@ public class Servlet_Nave extends HttpServlet {
                 RequestDispatcher a = request.getRequestDispatcher("/jsp/Register.jsp");
                 a.forward(request, response);
             } else if ("register".equalsIgnoreCase(action)) {
+                //RECOJO LOS VALORES DE LOS CAMPOS
                 String name = request.getParameter("name");
                 String alias = request.getParameter("alias");
                 String password = request.getParameter("password");
-
+                //ESTABLEZCO LOS VALORES CON LAS COLUMNAS
                 MimcerUsers mimcerUsers = new MimcerUsers();
                 mimcerUsers.setNameu(name);
                 mimcerUsers.setAlias(alias);
                 mimcerUsers.setPasswordu(password);
-
+                //LOS AÑADO A LA BBDD
                 MimcerUsersJpaController insert = new MimcerUsersJpaController(Persistence.createEntityManagerFactory("Nave_JpaPU"));
                 insert.create(mimcerUsers);
 
@@ -62,9 +63,6 @@ public class Servlet_Nave extends HttpServlet {
                 a.forward(request, response);
             } else if ("retry".equalsIgnoreCase(action)) {
                 RequestDispatcher a = request.getRequestDispatcher("index.jsp");
-                a.forward(request, response);
-            } else if ("play".equalsIgnoreCase(action)) {
-                RequestDispatcher a = request.getRequestDispatcher("lander/index.html");
                 a.forward(request, response);
             } else if ("matches".equalsIgnoreCase(action)) {
                 RequestDispatcher a = request.getRequestDispatcher("jsp/playedMatches.jsp");
@@ -75,33 +73,8 @@ public class Servlet_Nave extends HttpServlet {
             } else if ("friends".equalsIgnoreCase(action)) {
                 RequestDispatcher a = request.getRequestDispatcher("jsp/friends.jsp");
                 a.forward(request, response);
-            } else if ("login".equalsIgnoreCase(action)) {
-                //OBTENER LA HORA Y LA FECHA EN LA QUE SE HA INICIADO SESIÓN
-                /* Date date = new Date(); 
-                DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-                String dateTime = hourdateFormat.format(date); //Guardo los datos en un String
-                Date timeDate = hourdateFormat.parse(dateTime); //Guardo los datos en un Date
-                MimcerGame mimcerGame = new MimcerGame(); 
-                mimcerGame.setStartdate(timeDate); //Obtengo el valor de timeDate para la columna startDate de la tabla mimcerGame
-                MimcerGameJpaController insert = new MimcerGameJpaController(Persistence.createEntityManagerFactory("Nave_JpaPU"));
-                insert.create(mimcerGame); //inserto la fecha en la tabla*/
-
-                //SI EL LOGIN ES CORRECTO LLAMO AL MENU
+            }else if ("menu".equalsIgnoreCase(action)){
                 RequestDispatcher a = request.getRequestDispatcher("jsp/menu.jsp");
-                a.forward(request, response);
-            } else if ("logout".equalsIgnoreCase(action)) {
-                //OBTENER LA HORA Y LA FECHA EN LA QUE SE HA FINALIZADO LA SESIÓN
-                /*Date date = new Date(); 
-                DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-                String dateTime = hourdateFormat.format(date); //Guardo los datos en un String
-                Date timeDate = hourdateFormat.parse(dateTime); //Guardo los datos en un Date
-                MimcerGame mimcerGame = new MimcerGame(); 
-                mimcerGame.setEnddate(timeDate); //Obtengo el valor de timeDate para la columna startDate de la tabla mimcerGame
-                MimcerGameJpaController insert = new MimcerGameJpaController(Persistence.createEntityManagerFactory("Nave_JpaPU"));
-                insert.create(mimcerGame); //inserto la fecha en la tabla*/
-
-                //REDIRECCIONO EL MENU AL LOGIN
-                RequestDispatcher a = request.getRequestDispatcher("index.jsp");
                 a.forward(request, response);
             }
         } catch (Exception e) {

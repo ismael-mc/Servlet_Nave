@@ -13,7 +13,7 @@
     boolean autorizado = false;
     for (int i = 0; cookies != null && i < cookies.length; i++) {
         Cookie cookie = cookies[i];
-        if ("errorcookie".equals(cookie.getName())) {
+        if ("cookie".equals(cookie.getName())) {
             autorizado = true;
             break;
         }
@@ -35,10 +35,6 @@
                 document.datacookie.action.value = 'logout'
                 document.datacookie.submit();
             }
-            function play() {
-                document.dataform.action.value = 'play'
-                document.dataform.submit();
-            }
             function matches() {
                 document.dataform.action.value = 'matches'
                 document.dataform.submit();
@@ -57,12 +53,20 @@
         <h1>MAIN MENU</h1>
         <form name="dataform" action="<%=contextPath%>/Servlet_Nave" method="post">
             <input type="hidden" name="action" value="">
-            <nav>
-                <input type="button" value="PLAY" onclick="play();">
+            
+            <nav class="menu">
+                <input type="checkbox" id="togglemenu" checked />
+                <label for="togglemenu" class="togglemenu"></label>
+                <ul>
+                    <li><a href="<%= contextPath%>/lander/index.html">PLAY</a></li>
+                </ul>
+            </nav>	
+            
+            <section>
                 <input type="button" value="PLAYED MATCHES" onclick="matches();">
                 <input type="button" value="TOP 10" onclick="top();">
                 <input type="button" value="ONLINE FRIENDS" onclick="friends();">
-            </nav>	
+            </section>	
         </form>
         <br>
         <br>

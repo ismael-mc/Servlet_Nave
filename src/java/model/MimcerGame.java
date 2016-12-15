@@ -44,10 +44,10 @@ public class MimcerGame implements Serializable {
     @Column(name = "id_game")
     private Integer idGame;
     @Column(name = "startdate")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startdate;
     @Column(name = "enddate")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date enddate;
     @Column(name = "matches")
     private Integer matches;
