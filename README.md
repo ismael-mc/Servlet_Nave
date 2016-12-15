@@ -41,4 +41,4 @@ Una vez en el menú tenemos los siguientes botones y acciones:
  
 El archivo persistence.xml y context.xml están modificados con el fin de poder crear las tablas en una base de datos de un servidor llamada webdb.
 En el persistence en la zona de Design, he accedido a General y dentro en Table Generation Strategy he marcado el RadioButton de Create. Por otra parte en la zona de Source, he comentado todas las properties, menos la última que es la que genera El Radio Button seleccionado anteriormente. Además añado la siguiente linea debajo de persistence-unit:
-"<non-jta-data-source>java:/comp/env/jdbc/webdb</non-jta-data-source>".
+Abro y cierro una etiqueta llamada "non-jta-data-source" con "java:/comp/env/jdbc/webdb" dentro.
